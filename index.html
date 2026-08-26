@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance Pro</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">✓</div>
+            <div>
+                <h2>AttendPro</h2>
+                <span>Attendance System</span>
+            </div>
+        </div>
+
+        <nav>
+            <a class="nav-item active">
+                <span>📊</span>
+                Dashboard
+            </a>
+
+            <a class="nav-item">
+                <span>👥</span>
+                Participants
+            </a>
+
+            <a class="nav-item">
+                <span>📋</span>
+                Attendance
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="mini-card">
+                <span>💡</span>
+                <p>
+                    Keep your attendance records
+                    organized and up to date.
+                </p>
+            </div>
+        </div>
+
+    </aside>
+
+
+   
+    <main class="main">
+
+       
+        <header class="topbar">
+
+            <div>
+                <p class="welcome">Welcome back 👋</p>
+                <h1>Attendance Dashboard</h1>
+            </div>
+
+            <div class="date-box">
+                <span>📅</span>
+                <div>
+                    <small>Today's Date</small>
+                    <strong id="currentDate"></strong>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- STAT CARDS -->
+        <section class="stats">
+
+            <div class="stat-card total-card">
+                <div class="stat-icon">👥</div>
+                <div>
+                    <p>Total Participants</p>
+                    <h2 id="total">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card present-card">
+                <div class="stat-icon">✓</div>
+                <div>
+                    <p>Present Today</p>
+                    <h2 id="present">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card absent-card">
+                <div class="stat-icon">✕</div>
+                <div>
+                    <p>Absent Today</p>
+                    <h2 id="absent">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card percentage-card">
+                <div class="stat-icon">%</div>
+                <div>
+                    <p>Attendance Rate</p>
+                    <h2 id="percentage">0%</h2>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- PARTICIPANTS SECTION -->
+        <section class="content-card">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Participants</h2>
+                    <p>Manage participant attendance</p>
+                </div>
+
+                <button class="add-btn" onclick="openModal()">
+                    + Add Participant
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH + FILTER -->
+            <div class="toolbar">
+
+                <div class="search-box">
+                    <span>🔍</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search by name or ID..."
+                        oninput="displayParticipants()"
+                    >
+                </div>
+
+
+                <select
+                    id="filter"
+                    onchange="displayParticipants()"
+                >
+                    <option value="All">All Participants</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                    <option value="Not Marked">Not Marked</option>
+                </select>
+
+            </div>
+
+
+            <!-- TABLE -->
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Participant ID</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="attendanceTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div class="modal-overlay" id="modal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h2 id="modalTitle">Add Participant</h2>
+                <p>Enter participant details below</p>
+            </div>
+
+            <button
+                class="close-btn"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="e.g. Rahul Sharma"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Participant ID</label>
+
+            <input
+                type="text"
+                id="participantId"
+                placeholder="e.g. P101"
+            >
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                class="cancel-btn"
+                onclick="closeModal()"
+            >
+                Cancel
+            </button>
+
+            <button
+                class="save-btn"
+                onclick="saveParticipant()"
+            >
+                Add Participant
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div id="toast" class="toast">
+    <span id="toastIcon">✓</span>
+    <span id="toastMessage">Success</span>
+</div>
+
+
+<script src="scripts.js"></script>
+
+</body>
+</html>
