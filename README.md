@@ -8,6 +8,7 @@ Attendance Tracker is a responsive web-based application designed to manage atte
 
 The application allows users to register participants using their name and participant ID, mark them as Present or Absent, view attendance records, search and filter participants, and monitor attendance statistics through a dashboard.
 
+
 ##  Features
 
 - Add/register new participants
