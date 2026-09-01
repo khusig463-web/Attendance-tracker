@@ -11,6 +11,7 @@ The application allows users to register participants using their name and parti
 
 ##  Features
 
+
 - Add/register new participants
 - Store participant Name and ID
 - Mark participants as Present or Absent
